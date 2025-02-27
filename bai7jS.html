@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .calculator {
+        display: inline-block;
+        padding: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        margin-left: 5px;
+    }
+
+    .screen {
+        width: 100%;
+        height: 50px;
+        text-align: right;
+        font-size: 24px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    button {
+        padding: 20px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    button:active {
+        background-color: #ddd;
+    }
+    h1{
+        margin-left: 120px;
+    }
+</style>
+</head>
+<body>
+    <h1>Máy tính</h1>
+    <div class="calculator">
+        <input type="text" class="screen" id="screen" disabled>
+        <div class="buttons">
+        <button onclick="clearScreen()">C</button>
+        <button onclick="appendValue('/')">/</button>
+        <button onclick="appendValue('*')">*</button>
+        <button onclick="appendValue('-')">-</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="calculateResult()" style="background-color: rgb(0, 200, 255); border: 1px solid rgb(0, 200, 255); color: #fff;">=</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('0')">0</button>
+    </div>
+</div>
+
+<script>
+    const screen = document.getElementById('screen');
+
+    function appendValue(value) {
+        screen.value += value;
+    }
+
+    function clearScreen() {
+        screen.value = '';
+    }
+
+    function calculateResult() {
+        try {
+            const result = eval(screen.value);
+            if (result === Infinity || result === -Infinity) {
+                alert('Lỗi: Chia cho 0 không hợp lệ!');
+                clearScreen();
+            } else {
+                screen.value = result;
+            }
+        } catch {
+            alert('Lỗi: Phép toán không hợp lệ!');
+            clearScreen();
+        }
+        }
+</script>
+</body>
+</html>
