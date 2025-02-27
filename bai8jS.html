@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    <h1>Đồng hồ đếm ngược</h1>
+    <input type="number" id="timeInput" placeholder="Nhập số giây">
+    <button onclick="startCountdown()">Start</button>
+    <h2 id="countdown"></h2>
+
+<script>
+    let countdownInterval;
+        
+    function startCountdown() {
+        clearInterval(countdownInterval); 
+        const input = document.getElementById('timeInput').value;
+        let time = parseInt(input);
+        const countdownDisplay = document.getElementById('countdown');
+
+        if (isNaN(time) || time <= 0) {
+            alert("Vui lòng nhập số giây hợp lệ (lớn hơn 0)");
+            return;
+        }
+
+        countdownDisplay.innerText = `Đang chạy: ${time} s`;
+
+        countdownInterval = setInterval(() => {
+            time--;
+            if (time <= 0) {
+                clearInterval(countdownInterval);
+                countdownDisplay.innerText = "Hết giờ!";
+                alert("Hết giờ!");
+            } else {
+                countdownDisplay.innerText = `Đang chạy: ${time} s`;
+            }
+        }, 1000);
+    }
+</script>
+</body>
+</html>
