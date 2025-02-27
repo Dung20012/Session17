@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="text">This is a text</h1>
+    <button id="one">Hide text</button>
+    <button id="two">Show text</button>
+
+    <script>
+        let text = document.getElementById("text"); // lấy phần tử trong id
+        let one = document.getElementById("one");
+        let two = document.getElementById("two");
+
+        // thêm 1 đoạn chương trình xử lý sự kiện vào đối tượng document
+        one.addEventListener("click", () => { 
+            text.style.display = "none"; // ẩn nội dung
+        });
+
+        two.addEventListener("click", () => {
+            text.style.display = "block"; // hiển thị nội dung 
+        });
+    </script>
+</body>
+</html>
